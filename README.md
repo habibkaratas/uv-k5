@@ -1,336 +1,268 @@
 # UV-K5 Firmware Kullanım Kılavuzu
 
-## 📋 Bu Firmware'in Özellikleri
+## Genel Bakış
 
-Bu firmware, UV-K5 telsiz için özel olarak hazırlanmıştır ve aşağıdaki özellikleri içerir:
+Bu kılavuz, UV-K5 telsiz cihazı için özel firmware'in kullanımını açıklar. Firmware, telsiz cihazının menü sistemini, özelliklerini ve işlevlerini genişletir.
 
-### ✅ **Aktif Özellikler**
+## Önemli Uyarılar
 
-#### **STOCK QUANSHENG ÖZELLİKLERİ:**
-- **ENABLE_UART (1)** - Seri haberleşme
-- **ENABLE_AIRCOPY (1)** - Havadan veri transferi
-- **ENABLE_ALARM (1)** - Acil durum alarmı
-- **ENABLE_DTMF_CALLING (1)** - DTMF çağrı sistemi
-- **ENABLE_FLASHLIGHT (1)** - LED fener
+### Yasal Uyarı
+- Bu firmware sadece eğitim ve araştırma amaçlıdır
+- Yerel radyo yönetmeliklerine uygun kullanım kullanıcının sorumluluğundadır
+- Yasadışı frekanslarda yayın yapmak kesinlikle yasaktır
+- Firmware kullanımından doğacak tüm sorumluluk kullanıcıya aittir
 
-#### **ÖZEL MODİFİKASYONLAR:**
-- **ENABLE_BIG_FREQ (1)** - Büyük frekans gösterimi
-- **ENABLE_SMALL_BOLD (1)** - Küçük kalın yazı
-- **ENABLE_CUSTOM_MENU_LAYOUT (1)** - Özel menü düzeni
-- **ENABLE_KEEP_MEM_NAME (1)** - Bellek isimlerini koruma
-- **ENABLE_WIDE_RX (1)** - Geniş alıcı bant genişliği
-- **ENABLE_NO_CODE_SCAN_TIMEOUT (1)** - Kod yok tarama zaman aşımı
-- **ENABLE_AM_FIX (1)** - AM düzeltmesi
-- **ENABLE_SQUELCH_MORE_SENSITIVE (1)** - Daha hassas squelch
-- **ENABLE_FASTER_CHANNEL_SCAN (1)** - Hızlı kanal tarama
-- **ENABLE_RSSI_BAR (1)** - RSSI çubuğu
-- **ENABLE_AUDIO_BAR (1)** - Ses çubuğu
-- **ENABLE_COPY_CHAN_TO_VFO (1)** - Kanalı VFO'ya kopyalama
-- **ENABLE_SPECTRUM (1)** - Spektrum analizörü
-- **ENABLE_SCAN_RANGES (1)** - Tarama aralıkları
+### Teknik Uyarılar
+- Firmware yükleme işlemi risklidir, cihaz zarar görebilir
+- Yedekleme yapmadan firmware yüklemeyin
+- Sadece UV-K5 cihazı için tasarlanmıştır
+- Yanlış firmware yükleme cihazı kullanılamaz hale getirebilir
 
-#### **DERLEYİCİ SEÇENEKLERİ:**
-- **ENABLE_LTO (1)** - Link time optimizasyonu
+## Kurulum
 
-### ❌ **Pasif Özellikler**
+### Gereksinimler
+- UV-K5 telsiz cihazı
+- USB-C kablo
+- K5prog_IJV_V3 uygulaması
+- Firmware dosyası (.bin uzantılı)
 
-#### **STOCK QUANSHENG ÖZELLİKLERİ:**
-- **ENABLE_FMRADIO (0)** - FM radyo
-- **ENABLE_NOAA (0)** - NOAA hava durumu
-- **ENABLE_VOICE (0)** - Ses özellikleri
-- **ENABLE_VOX (0)** - Sesle tetikleme
-- **ENABLE_TX1750 (0)** - 1750 Hz ton
-- **ENABLE_PWRON_PASSWORD (0)** - Güç açılış şifresi
+### Kurulum Adımları
 
-#### **ÖZEL MODİFİKASYONLAR:**
-- **ENABLE_TX_WHEN_AM (0)** - AM modunda verici
-- **ENABLE_F_CAL_MENU (0)** - Frekans kalibrasyon menüsü
-- **ENABLE_CTCSS_TAIL_PHASE_SHIFT (0)** - CTCSS kuyruk faz kayması
-- **ENABLE_BOOT_BEEPS (0)** - Açılış sesleri
-- **ENABLE_SHOW_CHARGE_LEVEL (0)** - Şarj seviyesi gösterimi
-- **ENABLE_REVERSE_BAT_SYMBOL (0)** - Ters batarya sembolü
-- **ENABLE_REDUCE_LOW_MID_TX_POWER (0)** - Düşük/orta güç azaltma
-- **ENABLE_BYP_RAW_DEMODULATORS (0)** - Ham demodülatörler
-- **ENABLE_BLMIN_TMP_OFF (0)** - Geçici arka ışık kapatma
+1. **Cihazı Programlama Moduna Alın**
+   - Cihazı kapatın
+   - PTT tuşunu basılı tutun
+   - Açma tuşuna basın ve PTT'yi bırakın
+   - Ekranda "PROG" yazısı görünmelidir
 
-#### **HATA AYIKLAMA:**
-- **ENABLE_AM_FIX_SHOW_DATA (0)** - AM düzeltme veri gösterimi
-- **ENABLE_AGC_SHOW_DATA (0)** - AGC veri gösterimi
-- **ENABLE_UART_RW_BK_REGS (0)** - UART BK register okuma/yazma
+2. **K5prog_IJV_V3 Uygulamasını Açın**
+   - Uygulamayı yönetici olarak çalıştırın
+   - Port seçin (genellikle COM3 veya COM4)
+   - Hız: 115200 baud
+   - "Connect" butonuna basın
 
-#### **DERLEYİCİ SEÇENEKLERİ:**
-- **ENABLE_CLANG (0)** - Clang derleyici
-- **ENABLE_SWD (0)** - SWD debug
-- **ENABLE_OVERLAY (0)** - Overlay sistemi
+3. **Firmware Yükleyin**
+   - "Open File" ile firmware dosyasını seçin
+   - "Program" butonuna basın
+   - İşlem tamamlanana kadar bekleyin
+   - Cihazı yeniden başlatın
 
-UV-K5 bellek yetersizliğinden dolayı bazı özellikler kısıtlanmıştır.
+## Menü Sistemi
 
----
+### Ana Menü Başlıkları
 
-## 🚀 **Kurulum Talimatları**
+#### Temel Ayarlar
+- **Step**: Frekans adımı (2.5kHz, 5kHz, 6.25kHz, 10kHz, 12.5kHz, 25kHz)
+- **TxPwr**: Verici gücü (LOW, MID, HIGH)
+- **RxDCS**: Alıcı DCS kodu (OFF, D001N-D754N, D001I-D754I)
+- **RxCTCS**: Alıcı CTCSS tonu (OFF, 67.0Hz-254.1Hz)
+- **TxDCS**: Verici DCS kodu (OFF, D001N-D754N, D001I-D754I)
+- **TxCTCS**: Verici CTCSS tonu (OFF, 67.0Hz-254.1Hz)
+- **TxODir**: Verici offset yönü (OFF, +, -)
+- **TxOffs**: Verici offset frekansı (0.00000-69.99999 MHz)
+- **W/N**: Kanal bant genişliği (WIDE, NARROW)
+- **Scramb**: Scrambler (OFF, 2600Hz-3500Hz)
+- **BusyCL**: Meşgul kanal kilidi (OFF, ON)
+- **Compnd**: Compander (OFF, TX, RX, TX/RX)
+- **Demodu**: Modülasyon tipi (FM, AM)
 
-### **1. Firmware Yükleme**
+#### Kanal Yönetimi
+- **ScAdd1**: Tarama listesi 1'e ekleme (OFF, ON)
+- **ScAdd2**: Tarama listesi 2'ye ekleme (OFF, ON)
+- **ChSave**: Kanal kaydetme (0-999)
+- **ChDele**: Kanal silme (0-999)
+- **ChName**: Kanal adı düzenleme (0-999)
 
-#### **Gerekli Yazılım:**
-- **K5prog_IJV_V3** uygulaması (UV-K5 firmware yükleyici)
+#### Tarama Ayarları
+- **SList**: Tarama listesi (LIST1, LIST2, ALL)
+- **SList1**: Tarama listesi 1 ayarları
+- **SList2**: Tarama listesi 2 ayarları
+- **ScnRev**: Tarama devam modu (TIMEOUT, CARRIER, STOP)
 
-#### **Detaylı Yükleme Adımları:**
-1. **Telsizi tamamen kapatın.**
-2. **USB programlama kablosunu** bilgisayara ve telsize takın.
-3. **K5prog_IJV_V3** programını başlatın.
-4. Üstteki **Serial port** menüsünden, bağlı olan portu (ör: COM4) seçin.
-5. **Serial speed** kısmında **38400 - k5/k6** seçili olmalı.
-6. Programda `'COM4' opened at 38400 Baud` mesajını görmelisiniz.
-7. **Telsizi programlama moduna alın:**
-   - Telsiz kapalıyken **PTT (büyük yan tuş) tuşuna** basılı tutun.
-   - Basılıyken telsizi açın.
-   - Telsiz ekranı boş kalabilir veya programlama modunda olduğunu gösteren bir belirti olmayabilir (bu normaldir).
-8. **Write Firmware** butonuna tıklayın.
-9. Açılan pencerede **firmware.packed.bin** dosyasını seçin ve **Aç** butonuna tıklayın.
-10. Yükleme işlemi otomatik olarak başlayacaktır. Programda ilerleme ve mesajları takip edin.
-11. Yükleme tamamlandığında **"Write Flash Complete"** mesajını göreceksiniz.
-12. Telsizi kapatıp tekrar açın.
+#### Yan Tuş Fonksiyonları
+- **F1Shrt**: F1 kısa basma fonksiyonu
+- **F1Long**: F1 uzun basma fonksiyonu
+- **F2Shrt**: F2 kısa basma fonksiyonu
+- **F2Long**: F2 uzun basma fonksiyonu
+- **M Long**: M uzun basma fonksiyonu
 
-#### **Önemli Notlar:**
-- Yükleme sırasında **telsizi kapatmayın** ve **USB bağlantısını kesmeyin**.
-- Yükleme **2-3 dakika** sürebilir.
-- Hatalı yükleme veya bağlantı kopması durumunda işlemi baştan başlatın.
-- Yanlış port seçerseniz program hata verebilir, doğru COM portunu seçtiğinizden emin olun.
-- Yükleme sırasında kanal ve ayarlarınız silinebilir, isterseniz "Read Configuration" ile yedek alabilirsiniz.
+#### Sistem Ayarları
+- **KeyLck**: Otomatik tuş kilidi (OFF, AUTO)
+- **TxTOut**: Verici zaman aşımı (30sec-15min)
+- **BatSav**: Pil tasarrufu (OFF, 1:1, 1:2, 1:3, 1:4)
+- **Mic**: Mikrofon hassasiyeti (0-4)
+- **ChDisp**: Kanal görüntüleme (FREQ, CHANNEL NUMBER, NAME, NAME+FREQ)
+- **POnMsg**: Açılış mesajı (FULL, MESSAGE, VOLTAGE, NONE)
+- **BatTxt**: Pil metni (NONE, VOLTAGE, PERCENT)
+- **BackLt**: Arka ışık (OFF, 5sec, 10sec, 20sec, 1min, 2min, 4min, ON)
+- **BLMin**: Arka ışık minimum (0-9)
+- **BLMax**: Arka ışık maksimum (1-10)
+- **BltTRX**: Arka ışık TX/RX (OFF, TX, RX, TX/RX)
+- **Beep**: Bip sesi (OFF, ON)
 
-### **2. İlk Açılış**
-- Telsiz normal şekilde açılacak
-- Tüm ayarlar varsayılan değerlerde
-- Kanal listesi boş olacak
+#### Ses ve İletişim
+- **Voice**: Sesli menü (OFF, CHI, ENG)
+- **Roger**: Roger beep (OFF, ROGER, MDC)
+- **STE**: Tail tone eliminasyonu (OFF, ON)
+- **RP STE**: Repeater tail tone eliminasyonu (OFF, 1-10*100ms)
 
-### **3. Fabrika Ayarlarına Sıfırlama (ÖNEMLİ!)**
-**Tüm özelliklerin düzgün çalışması için:**
-1. **Telsizi kapatın**
-2. **Yan tuş 1 + PTT tuşuna** aynı anda basılı tutun
-3. **Telsizi açın** (RELEASE ALL KEY yazısını görene kadar tuşları bırakmayın)
-4. **Özel menü** açılacak
-5. **RESET** menüsüne gidin
-6. **ALL** seçeneğini seçin
-7. **Fabrika ayarlarına** sıfırlanacak
-8. **Telsizi yeniden açın**
+#### DTMF Ayarları
+- **ANI ID**: ANI DTMF ID (8 karakter)
+- **UPCode**: Yukarı kod (16 karakter)
+- **DWCode**: Aşağı kod (16 karakter)
+- **PTT ID**: PTT ID modu (OFF, UP CODE, DOWN CODE, UP+DOWN CODE, APOLLO QUINDAR)
+- **D ST**: DTMF side tone (OFF, ON)
+- **D Resp**: DTMF yanıt (DO NOTHING, RING, REPLY, BOTH)
+- **D Hold**: DTMF tutma süresi (5-60 saniye)
+- **D Prel**: DTMF ön yükleme (3-99*10ms)
+- **D Decd**: DTMF çözme (OFF, ON)
+- **D List**: DTMF liste (1-16)
+- **D Live**: Canlı DTMF çözücü (OFF, ON)
 
-**Bu işlem tüm özelliklerin aktif olmasını sağlar!**
+#### Özel Özellikler
+- **AM Fix**: AM düzeltme (OFF, ON)
+- **VOX**: Sesle iletim (OFF, 1-10)
+- **BatVol**: Pil voltajı görüntüleme
+- **RxMode**: Alıcı modu (MAIN ONLY, DUAL RX RESPOND, CROSS BAND, MAIN TX DUAL RX)
+- **Sql**: Squelch seviyesi (0-9)
 
----
+### Gizli Menü (Boot Modunda Erişim)
 
-## 🎛️ **Temel Kullanım**
+Açılış sırasında PTT + yan tuş basılı tutularak erişilir:
 
-### **Frekans Ayarlama**
-- **VFO Modu:** Sayı tuşları ile frekans girin
-- **Kanal Modu:** Önceden kaydedilmiş kanallar
-- **Adım:** 12.5 kHz, 25 kHz, 50 kHz seçenekleri
+- **F Lock**: Frekans kilidi
+  - DEFAULT+137-174/400-470
+  - FCC HAM 144-148/420-450
+  - CE HAM 144-146/430-440
+  - GB HAM 144-148/430-440
+  - 137-174/400-430
+  - 137-174/400-438
+  - DISABLE ALL
+  - UNLOCK ALL
 
-### **Verici Kullanımı**
-- **PTT:** Push-to-Talk düğmesi ile konuşma
-- **Güç:** Düşük/Orta/Yüksek seçimi
-- **Mod:** FM, AM seçenekleri
+- **Tx 200**: 200MHz verici (OFF, ON)
+- **Tx 350**: 350MHz verici (OFF, ON)
+- **Tx 500**: 500MHz verici (OFF, ON)
+- **350 En**: 350MHz etkinleştirme (OFF, ON)
+- **ScraEn**: Scrambler etkinleştirme (OFF, ON)
+- **FrCali**: Frekans kalibrasyonu (-50 ile +50)
+- **BatCal**: Pil kalibrasyonu (1600-2200)
+- **BatTyp**: Pil tipi (1600mAh, 2200mAh)
+- **Reset**: Sıfırlama (VFO, ALL)
 
-### **Alıcı Kullanımı**
-- **Squelch:** Otomatik (hassas)
-- **Bant Genişliği:** Geniş (daha iyi ses)
-- **Ses:** Ayarlanabilir seviye
+### Yan Tuş Fonksiyonları
 
----
+Aşağıdaki fonksiyonlar yan tuşlara atanabilir:
 
-## 📡 **Özel Özellikler**
+- **NONE**: Hiçbir işlem
+- **FLASHLIGHT**: El feneri
+- **POWER**: Güç açma/kapama
+- **MONITOR**: Monitör modu
+- **SCAN**: Tarama başlatma/durdurma
+- **VOX**: VOX açma/kapama
+- **ALARM**: Alarm başlatma
+- **FM RADIO**: FM radyo açma/kapama
+- **1750HZ**: 1750Hz ton gönderme
+- **LOCK KEYPAD**: Tuş kilidi
+- **SWITCH VFO**: VFO değiştirme
+- **VFO/MR**: VFO/MR modu değiştirme
+- **SWITCH DEMODUL**: Demodülasyon değiştirme
+- **BLMIN TMP OFF**: Arka ışık geçici kapatma
+- **SPECTRUM**: Spektrum analizörü
 
-### **1. AIRCOPY - Havadan Veri Transferi**
+## Özel Özellikler
 
-#### **Erişim:**
-- **Yan tuş 2'ye basılı tutarak** telsizi açın
-- Ekranda "AIR COPY(RDY)" görünür
+### Spektrum Analizörü
+- **Erişim**: Yan tuş fonksiyonlarına atanabilir
+- **Özellikler**:
+  - Frekans aralığı: 18-1300 MHz
+  - Adım sayısı: 64, 128, 256, 512
+  - Tarama adımı: 2.5kHz - 1MHz
+  - RSSI tetik seviyesi: -130 ile -50 dBm arası
+  - Bant genişliği: 25kHz, 12.5kHz, 6.25kHz
+  - Modülasyon: FM, AM
+  - AGC kilidi
+  - Kara liste
+  - Tepe bulma
+  - Frekans girişi
 
-#### **Kullanım:**
-```
-Gönderen Cihaz:
-1. Yan tuş 2 + açılış
-2. Frekans gir (örn: 410025)
-3. MENU tuşuna basın
-4. "SND:0" görünür
+### AIRCOPY (Gizli Mod)
+- **Erişim**: Açılış sırasında PTT + yan2 tuşu
+- **İşlev**: EEPROM üzerinden veri transferi
+- **Kullanım**: İki cihaz arasında kanal ve ayar kopyalama
 
-Alıcı Cihaz:
-1. Yan tuş 2 + açılış
-2. Aynı frekansı gir
-3. EXIT tuşuna basın
-4. "RCV:0 E:0" görünür
-```
+### FM Radyo
+- **Erişim**: Yan tuş fonksiyonlarına atanabilir
+- **Özellikler**:
+  - Frekans aralığı: 64-108 MHz
+  - Otomatik tarama
+  - Kanal kaydetme (20 kanal)
+  - MR modu
+  - Ses çıkışı
 
-#### **Transfer Edilen Veriler:**
-- Kanal listesi ve frekanslar
-- Kanal isimleri
-- CTCSS/DCS tonları
-- Güç ayarları
-- Diğer kanal parametreleri
+### DTMF Çağrı Sistemi
+- **Özellikler**:
+  - 16 kişilik rehber
+  - ANI ID
+  - PTT ID
+  - Otomatik yanıt
+  - Canlı çözücü
+  - Side tone
 
-### **2. Spektrum Analizörü**
+### Alarm Sistemi
+- **Modlar**: SITE (konum), TONE (ses)
+- **Erişim**: Normal menüde "AlarmT" başlığı
 
-#### **Aktif Etme:**
-- **Yan fonksiyon olarak** atanabilir
-- Menüden yan fonksiyon ayarlarına gidip "SPECTRUM" seçeneğini seçin
+## Kullanım İpuçları
 
-#### **Kullanım:**
-- **Frekans Aralığı:** 18-1300 MHz
-- **Tarama Hızı:** Optimize edilmiş
-- **Hassasiyet:** Yüksek
-- **Adım:** 10 kHz
+### Menü Navigasyonu
+- **MENU**: Menüye giriş
+- **▲/▼**: Menüde gezinme
+- **EXIT**: Menüden çıkış
+- **0-9**: Değer girişi
+- ***/**: Alt menüye giriş
 
-#### **Yorumlama:**
-- **Yüksek çubuklar:** Güçlü sinyaller
-- **Düşük çubuklar:** Zayıf sinyaller
-- **Boş alanlar:** Sinyal yok
-- **Sürekli çubuklar:** Parazit
+### Frekans Girişi
+- Menüde frekans girerken nokta otomatik eklenir
+- MHz cinsinden giriş yapın (örn: 145500 = 145.500 MHz)
 
-### **3. Alarm Sistemi**
+### Kanal Yönetimi
+- Kanal kaydetme: MENU → ChSave → kanal numarası
+- Kanal silme: MENU → ChDele → kanal numarası
+- Kanal adı: MENU → ChName → kanal numarası → ad girişi
 
-#### **Erişim:**
-- **Menüde "AlarmT" seçeneği**
-- Menü listesinde bulunur
+### Tarama
+- Tarama listesi oluşturma: SList1/SList2 menülerinden
+- Tarama başlatma: Yan tuş fonksiyonlarından SCAN
+- Tarama durdurma: EXIT tuşu
 
-#### **Alt Menüler:**
-- **SITE:** Konum bazlı alarm
-- **TONE:** Sesli ton alarmı
+### Spektrum Analizörü
+- Frekans değiştirme: ▲/▼ tuşları
+- Adım değiştirme: MENU + ▲/▼
+- Tetik seviyesi: EXIT + ▲/▼
+- Bant genişliği: */ + ▲/▼
 
-#### **Kullanım:**
-- **Alarm Gönderme:** Alarm tuşu veya menüden
-- **Alarm Alma:** Otomatik uyarı
-- **SOS Sinyali:** Acil yardım çağrısı
+## Sorun Giderme
 
-### **4. DTMF Çağrı Sistemi**
+### Yaygın Sorunlar
+1. **Cihaz açılmıyor**: Firmware yükleme hatası, orijinal firmware'e geri dönün
+2. **Menü çalışmıyor**: Tuş kilidi aktif, EXIT tuşuna basın
+3. **Frekans ayarlanamıyor**: F Lock aktif, gizli menüden UNLOCK ALL seçin
+4. **Pil göstergesi yanlış**: BatCal menüsünden kalibrasyon yapın
 
-#### **Kullanım:**
-- **Kod Formatı:** 0-9, A-D, *, # karakterleri
-- **Çağrı Gönderme:** DTMF kodları ile
-- **Çağrı Alma:** Otomatik yanıt
-- **Grup Çağrıları:** Desteklenir
+### Güvenlik
+- Firmware yüklemeden önce mutlaka yedek alın
+- Sadece güvenilir kaynaklardan firmware indirin
+- Yükleme sırasında cihazı kapatmayın
+- Hata durumunda orijinal firmware'e geri dönün
 
-#### **Özellikler:**
-- 3 haneli kod sistemi
-- Otomatik yanıt
-- Grup çağrıları
-- Acil durum çağrıları
-- Kişi listesi (16 kişi)
+## Teknik Destek
 
----
-
-## 🎨 **Görsel Özellikler**
-
-### **Büyük Frekans Gösterimi**
-- Frekans büyük ve net görünür
-- Daha okunabilir ekran
-- Hızlı frekans kontrolü
-
-### **Küçük Kalın Yazı**
-- Küçük yazılar kalın gösterilir
-- Daha iyi okunabilirlik
-- Kontrast artışı
-
-### **RSSI Çubuğu**
-- Sinyal gücü göstergesi
-- Çubuk grafik şeklinde
-- Anten yönlendirme için
-
-### **Ses Çubuğu**
-- Ses seviyesi göstergesi
-- Mikrofon ayarlama için
-- Ses kalitesi kontrolü
-
----
-
-## 🔧 **Menü Navigasyonu**
-
-### **Ana Menü Erişimi**
-- **FUNC + 0:** İlk menü
-- **Yukarı/Aşağı:** Menü gezinme
-- **MENU:** Seçim onaylama
-- **EXIT:** Geri dönüş
-
-### **Önemli Menü Öğeleri**
-1. **Step:** Frekans adımı
-2. **TxPwr:** Verici gücü
-3. **RxDCS:** Alıcı DCS kodu
-4. **RxCTCS:** Alıcı CTCSS tonu
-5. **TxDCS:** Verici DCS kodu
-6. **TxCTCS:** Verici CTCSS tonu
-7. **AlarmT:** Alarm ayarları (40. sırada)
-8. **Reset:** Sıfırlama menüsü (VFO, ALL seçenekleri)
-
-### **Reset Menü Seçenekleri**
-- **VFO:** Sadece VFO ayarlarını sıfırlar
-- **ALL:** Tüm ayarları fabrika ayarlarına sıfırlar
-
----
-
-## 📱 **Pratik Kullanım Senaryoları**
-
-### **Günlük Kullanım**
-1. **Açılış:** Normal açılış
-2. **Frekans:** VFO veya kanal seçimi
-3. **İletişim:** PTT ile konuşma
-4. **Tarama:** Otomatik kanal tarama
-
-### **Profesyonel Kullanım**
-1. **Spektrum Analizi:** Yan fonksiyon olarak atanmış spektrum analizörü
-2. **Frekans Keşfi:** Spektrum ile sinyal arama
-3. **Kanal Programlama:** AIRCOPY ile veri transferi
-4. **Grup İletişimi:** DTMF çağrıları
-
-### **Acil Durum Kullanımı**
-1. **Alarm:** Alarm menüsünden SOS
-2. **Yüksek Güç:** Maksimum menzil
-3. **Geniş Bant:** En iyi sinyal kalitesi
-4. **Fener:** Acil aydınlatma
+Bu firmware açık kaynak kodludur ve topluluk tarafından geliştirilmektedir. Sorunlar için:
+- GitHub repository'sini kontrol edin
+- Topluluk forumlarını ziyaret edin
+- Hata raporları için issue açın
 
 ---
-
-## ⚠️ **Önemli Notlar**
-
-### **Güvenlik**
-- **Lisans:** Amatör telsiz lisansı gerekli
-- **Frekans:** İzin verilen frekansları kullanın
-- **Güç:** Yasal güç sınırlarına uyun
-
-### **Bakım**
-- **Pil:** Düzenli şarj
-- **Anten:** Temiz ve sağlam
-- **Firmware:** Güncel tutun
-
-### **Sorun Giderme**
-- **Sinyal Yok:** Anten kontrolü
-- **Ses Yok:** Ses ayarları
-- **Pil Sorunu:** Şarj kontrolü
-- **Firmware Hatası:** Yeniden yükleme
-
----
-
-## 📞 **Destek**
-
-Bu firmware ücretsiz olarak paylaşılmaktadır. Herkes istediği gibi kullanabilir, değiştirebilir ve dağıtabilir. Sorumluluk kullanıcıya aittir.
-
-### **Özellikler:**
-- ✅ UART Haberleşme
-- ✅ AIRCOPY Veri Transferi
-- ✅ DTMF Çağrı Sistemi
-- ✅ Alarm Sistemi
-- ✅ Fener
-- ✅ Büyük Frekans Gösterimi
-- ✅ Spektrum Analizörü (Yan fonksiyon olarak)
-- ✅ Gelişmiş Squelch
-- ✅ Hızlı Tarama
-- ✅ Görsel Göstergeler
-
-Bu kılavuz, firmware'inizin tüm özelliklerini ve kullanım yöntemlerini açıklamaktadır.
-
----
-
-## ⚖️ **Yasal Uyarı ve Sorumluluk Reddi**
-
-### **Eğitim ve Araştırma Amaçlı Kullanım**
-Bu firmware **sadece eğitim ve araştırma amaçlı** olarak geliştirilmiştir. Kullanıcılar bu firmware'i kendi sorumlulukları altında kullanırlar.
 
 **ÖNEMLİ:** Bu firmware ticari, profesyonel veya ticari amaçlı kullanım için tasarlanmamıştır. Sadece eğitim, öğrenme ve kişisel araştırma amaçlıdır.
 

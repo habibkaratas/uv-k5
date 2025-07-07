@@ -46,6 +46,17 @@ Bu kılavuz, UV-K5 telsiz cihazı için özel firmware'in kullanımını açıkl
    - İşlem tamamlanana kadar bekleyin
    - Cihazı yeniden başlatın
 
+### **Fabrika Ayarlarına Sıfırlama (ÖNEMLİ!)**
+**Tüm özelliklerin düzgün çalışması için:**
+1. **Telsizi kapatın**
+2. **Yan tuş 1 + PTT tuşuna** aynı anda basılı tutun
+3. **Telsizi açın** (RELEASE ALL KEY yazısını görene kadar tuşları bırakmayın)
+4. **Özel menü** açılacak
+5. **RESET** menüsüne gidin
+6. **ALL** seçeneğini seçin
+7. **Fabrika ayarlarına** sıfırlanacak
+8. **Telsizi yeniden açın**
+
 ## Menü Sistemi
 
 ### Ana Menü Başlıkları
